@@ -1,0 +1,137 @@
+body {
+	text-align: center;
+}
+
+.header {
+	font-family: courier;
+	font-size: 70px;
+	
+}
+
+.midline {
+	font-family: courier;
+	font-size: 30px;
+	border: 2px solid black;
+}
+
+.role {
+	font-family: cooper;
+	font-size: 20px;
+}
+
+.scope {
+	margin-left: auto;
+	margin-right: auto;
+	padding: 30px;
+	border: 2px solid black;
+	margin-bottom: 25px;
+}
+
+th {
+	font-family: cooper;
+	padding: 30px;
+}
+
+td {
+	padding: 15px;
+	font-family: garamond;
+	font-weight: bold;
+	font-size: 17px;
+}
+
+.clickablea {
+	padding: 5px 10px;
+	text-decoration: unset;
+	border: 2px solid black;
+	text-align: center;
+	display: inline-block;
+	background-color: white;
+	color: black;
+}
+
+.clickablea:hover {
+	background-color: red;
+	color: white;
+}
+
+.clickableb {
+	padding: 5px 10px;
+	text-decoration: unset;
+	border: 2px solid black;
+	text-align: center;
+	display: inline-block;
+	background-color: white;
+	color: black;
+}
+
+.clickableb:hover {
+	background-color: blue;
+	color: white;
+}
+
+.additional {
+	font-size: 18px;
+	font-family: cooper;
+	color: green;
+	text-decoration: unset;
+}
+
+.additional:hover {
+	color:blue;
+	text-decoration: underline;
+	font-size: 150%;
+}
+
+.head {
+	background-position: low;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+}
+
+.modify {
+	display:inline-block;
+	margin-right:30px;
+	text-align:right;
+	font-family: courier;
+	padding: 30px;
+	font-weight: bold;
+}
+
+.submit {
+	padding: 10px;
+}
+
+
+.background {
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+	height: 100vh;
+}
+
+.container {
+	background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+	height: 100vh;
+}
+
+.header-container {
+	background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+	
+}
+
+input {
+	font-size: 15px;
+}
+
+input:hover {
+	font-size: 125%;
+}
+
+
+.signout:hover {
+	background-color: red;
+	color: white;
+	font-size: 125%;
+}

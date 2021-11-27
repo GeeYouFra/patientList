@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Patient Modification</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" th:href="@{/css/styling.css}" />
+</head>
+<body>
+	<div class="header-container">
+		<h1 class="header">Thrones Hospital</h1>
+	</div>
+
+<div class="container">
+
+	<h3 class="midline">Modify Patient Information</h3>
+	<div class="modify">
+		<form th:object="${patient}" th:action="@{../save}" action="#"
+			method="post">
+			<div style="clear: both; display: block; height: 30px;">
+			<label for="id"></label> <input type="hidden" id="id"
+				th:field="*{id}" readonly="readonly" /> <label for="name">Name</label>
+			<input type="text" id="name" th:field="*{name}" />
+			</div>
+			
+			<div style="clear: both; display: block; height: 30px;">
+			<label for="ward">Ward</label> <input type="text" id="ward"
+				th:field="*{ward}" />
+			</div>
+			
+			<div style="clear: both; display: block; height: 30px;">
+			<label for="diagnosis">Diagnosis</label> <input type="text"
+				th:field="*{diagnosis}" />
+			</div>
+			
+			<div style="clear: both; display: block; height: 30px;">
+			<label for="dateAdmission">Date of Admission</label> <input
+				type="text" th:field="*{dateAdmission}" />
+			</div>
+			
+			<div style="clear: both; display: inline-block; height: 30px; width:345px; text-align:center;">
+			<label  for="doclist">Doctor</label> <select id="doclist"
+				th:field="*{doctor}" class="form-control">
+				<option th:each="doctor: ${doctors}" th:value="${doctor.doctorid}"
+					th:text="${doctor.name}"></option>
+			</select>
+			</div>
+
+			<div class="submit" style="clear: both; display: block; height: 10px;">
+			<input type="submit" value="Save Modification"></input>
+			<input onclick="window.history.go(-1); return false;" type="submit" value="Cancel" class="btn btn-danger"></input>
+			</div>
+		</form>
+	</div>
+	</div>
+</body>
+</html>
