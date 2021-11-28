@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.PatientList.domain.Doctor;
 import com.example.PatientList.domain.DoctorRepository;
 import com.example.PatientList.domain.Patient;
 import com.example.PatientList.domain.PatientRepository;
@@ -35,9 +36,20 @@ public class PatientListController {
 	@RequestMapping(value = { "/", "/patientList" })
 	public String showIndex(Model model) {
 		model.addAttribute("patients", repository.findAll());
+		model.addAttribute("doctor", new Doctor());
+		model.addAttribute("doctors", docrepository.findAll());
 		return "patientList";
 	}
 
+	@RequestMapping(value="/patientList", method=RequestMethod.POST)
+	public String patientSearch(Doctor doctor, Model model) {
+		List<Patient> patients = repository.findByDoctor(docrepository.findById(doctor.getDoctorid()).get());
+		model.addAttribute("patients", patients);
+		model.addAttribute("doctor", new Doctor());
+		model.addAttribute("doctors", docrepository.findAll());
+		return "patientlist";
+	}
+	
 	@RequestMapping(value = "/patients", method = RequestMethod.GET)
 	public @ResponseBody List<Patient> patientListRest() {
 		return (List<Patient>) repository.findAll();

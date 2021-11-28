@@ -10,10 +10,12 @@
 	<div class="head" style="background-image: url('images/hospital.jpg');">
 		<h1 class="header">Thrones Hospital</h1>
 	</div>
-	<div class="background" style="background-image: url('images/hospital.jpg');">
+	<div class="background"
+		style="background-image: url('images/hospital.jpg');">
 		<div class="col-md-4">
 			<h3 class="midline" th:inline="text">Patient Masterlist</h3>
-			<h4 class="role" th:inline="text">Logged in as [[${#httpServletRequest.remoteUser}]]</h4>
+			<h4 class="role" th:inline="text">Logged in as
+				[[${#httpServletRequest.remoteUser}]]</h4>
 		</div>
 
 		<div class="col-md-4" style="padding: 10px 0">
@@ -21,14 +23,28 @@
 				<input class="signout" type="submit" value="Sign Out" />
 			</form>
 		</div>
-		
+
 		<table class="scope">
 			<tr>
 				<th>Name</th>
 				<th>Ward</th>
 				<th>Diagnosis</th>
 				<th>Date of Admission</th>
-				<th>Doctor</th>
+				<th>Doctor
+					<form class="clickableb" action="#" th:action="@{patientList}" th:object="${doctor}"
+						method="post">
+						<div class="row">
+							<select id="doctor" th:field="*{doctorid}" name="doctor"
+								class="col form-control">
+								<option th:each="doctor : ${doctors}"
+									th:value="${doctor.doctorid}" th:text="${doctor.name}"></option>
+							</select> <input type="submit" value="Fetch" class="btn btn-info" />
+						</div>
+					</form>
+
+				</th>
+				<th><button class="clickableb"><a href="/patientList">Patient List</a></button>
+				</th>
 			</tr>
 			<tr th:each="patient : ${patients}">
 				<td th:text="${patient.name}"></td>
@@ -41,43 +57,43 @@
 					onclick="return confirm('Do you really want to delete me?');">Delete</a></td>
 				<td sec:authorize="hasAuthority('ADMIN')"><a class="clickableb"
 					th:href="@{/edit/{id}(id=${patient.id})}">Modify</a></td>
-				
-				<td>
-					
-				</td>
-			
+
+				<td></td>
+
 			</tr>
 		</table>
 		<input id="fileupload" type="file" name="fileupload" />
-					<button id="upload-button" onclick="uploadFile()"> Upload </button>	
+		<button id="upload-button" onclick="uploadFile()">Upload</button>
 
-	<p> - - - - </p>	
-	
+		<p>- - - -</p>
+
 		<a class="additional" href="/add">Add Patient</a>
-		
-		<p>Current Date is: <span id='date-time'></span></p>
-		<p style="font-size: 17px; font-weight: bold" 
-					th:text="${#dates.format(#dates.createNow(),'dd/MM/YYYY')}">
-		
+
+		<p>
+			Current Date is: <span id='date-time'></span>
+		</p>
+		<p style="font-size: 17px; font-weight: bold"
+			th:text="${#dates.format(#dates.createNow(),'dd/MM/YYYY')}">
 	</div>
-<script>
-	async function uploadFile() {
-	let formData = new FormData();
-	console.log(fileupload.files[0])
-	formData.append("file", fileupload.files[0]);
-	let response = await fetch('/upload', {
-		method: "POST",
-		body: formData
-		});
-	
-	if (response.status == 200) {
-		alert("File successfully uploaded!");
-	}
-	else {
-		alert("File successfully uploaded!")
-	}
-	}
-</script>
-	</body>
+	<script>
+		async
+		function uploadFile() {
+			let formData = new FormData();
+			console.log(fileupload.files[0])
+			formData.append("file", fileupload.files[0]);
+			let response = await
+			fetch('/upload', {
+				method : "POST",
+				body : formData
+			});
+
+			if (response.status == 200) {
+				alert("File successfully uploaded!");
+			} else {
+				alert("File successfully uploaded!")
+			}
+		}
+	</script>
+</body>
 
 </html>
