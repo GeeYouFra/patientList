@@ -1,5 +1,5 @@
 Patient List
 
 Login Details:
-user / user
+user / user OR
 admin / admin
